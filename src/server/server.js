@@ -55,7 +55,6 @@ const init = async () => {
 
 
     await server.start();
-
     console.log(`Server Started at ${server.info.uri}`);
 }
 

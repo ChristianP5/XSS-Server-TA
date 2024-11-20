@@ -11,7 +11,6 @@ const responseBuilder = (h, status='success', code=200, message, data={}) => {
     return response;
 }
 
-
 /*
     GET Root Handler
     1) Return Root Message
@@ -21,7 +20,6 @@ const getRootHandler = async (request, h) => {
     return responseBuilder(h, 'success', 200, 'Root Reached!')
 };
 
-
 /*
     GET Tokens Page Handler
     1) Get Tokens from Database
@@ -30,9 +28,7 @@ const getRootHandler = async (request, h) => {
 const getTokensPageHandler = async (request, h) => {
 
     // 1)
-    const data = {
-
-    }
+    const data = {}
 
     const tokens = await getTokens();
     data.tokens = tokens;
@@ -40,7 +36,6 @@ const getTokensPageHandler = async (request, h) => {
     // 2)
     return h.view('tokens.ejs', data);
 }
-
 
 /*
     SAVE TOKEN Handler
@@ -60,18 +55,17 @@ const saveTokenHandler = async (request, h) => {
 
 }
 
-
 /*
     GET All Tokens Handler
     1) Get All Token
-    2) SBuild Response
+    2) Build Response
 */
 const getAllTokensHandler = async (request, h) => {
     // 1)
     const tokens = await getTokens();
 
     // 2)
-    return responseBuilder(h, "success", 200, "Tokens Retrieved Successfully!");
+    return responseBuilder(h, "success", 200, "Tokens Retrieved Successfully!", { tokens: tokens });
 }
 
 module.exports = {
